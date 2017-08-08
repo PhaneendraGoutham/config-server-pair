@@ -1,0 +1,5 @@
+jar_name: "auth.jar"
+conf_name: "application.yml"
+app_path: "/opt/auth"
+app_conf_path: "{{ app_path }}/conf"
+app_bin_path: "{{ app_path }}/bin"

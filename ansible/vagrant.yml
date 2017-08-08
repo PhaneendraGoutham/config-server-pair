@@ -1,0 +1,36 @@
+---
+- hosts: config
+  become: yes
+  remote_user: "{{ hostvars[groups['pay'][0]]['ansible_ssh_user'] }}"
+  vars_files:
+    - vars/common.yml
+    - vars/config.yml
+  tasks:
+    - include: tasks/config.yml
+
+- hosts: eureka
+  become: yes
+  remote_user: "{{ hostvars[groups['pay'][0]]['ansible_ssh_user'] }}"
+  vars_files:
+    - vars/common.yml
+    - vars/eureka.yml
+  tasks:
+    - include: tasks/eureka.yml
+
+- hosts: auth
+  become: yes
+  remote_user: "{{ hostvars[groups['pay'][0]]['ansible_ssh_user'] }}"
+  vars_files:
+    - vars/common.yml
+    - vars/auth.yml
+  tasks:
+    - include: tasks/auth.yml
+
+- hosts: notification
+  become: yes
+  remote_user: "{{ hostvars[groups['pay'][0]]['ansible_ssh_user'] }}"
+    vars_files:
+      - vars/common.yml
+      - vars/notification.yml
+    tasks:
+      - include: tasks/notification.yml

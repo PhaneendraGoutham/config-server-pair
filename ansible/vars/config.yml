@@ -1,0 +1,5 @@
+jar_name: "config.jar"
+conf_name: "application.yml"
+app_path: "/opt/config"
+app_conf_path: "{{ app_path }}/conf"
+app_bin_path: "{{ app_path }}/bin"

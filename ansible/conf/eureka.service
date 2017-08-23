@@ -1,0 +1,11 @@
+[Unit]
+Description=eureka
+After=syslog.target
+
+[Service]
+WorkingDirectory=/opt/eureka/bin
+ExecStart=/usr/bin/java -jar eureka.jar
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target

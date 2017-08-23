@@ -1,0 +1,11 @@
+[Unit]
+Description=auth
+After=syslog.target
+
+[Service]
+WorkingDirectory=/opt/auth/bin
+ExecStart=/usr/bin/java -jar auth.jar
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target

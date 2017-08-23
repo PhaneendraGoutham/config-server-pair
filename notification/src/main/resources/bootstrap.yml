@@ -1,0 +1,22 @@
+logging:
+  level:
+    org.springframework.web: ERROR
+    com.example.config_server.notification: TRACE
+
+server:
+  port: 8090
+
+spring:
+  application:
+    name: notification
+  cloud:
+    config:
+      enabled: true
+      label: ${CONFIG_BRANCH:master}
+      uri: http://config:8888
+      fail-fast: true
+#      password: ${CONFIG_SERVICE_PASSWORD}
+#      username: user
+      discovery:
+          enabled: true
+          serviceId: ${CONFIG_SERV:config-server}

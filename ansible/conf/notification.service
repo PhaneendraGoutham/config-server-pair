@@ -1,0 +1,11 @@
+[Unit]
+Description=notification
+After=syslog.target
+
+[Service]
+WorkingDirectory=/opt/notification/bin
+ExecStart=/usr/bin/java -jar notification.jar
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target

@@ -6,7 +6,7 @@
     - vars/common.yml
     - vars/config.yml
   tasks:
-    - include: tasks/config.yml
+    - include: tasks/jvm_service.yml
 
 - hosts: eureka
   become: yes
@@ -15,7 +15,7 @@
     - vars/common.yml
     - vars/eureka.yml
   tasks:
-    - include: tasks/eureka.yml
+    - include: tasks/jvm_service.yml
 
 - hosts: auth
   become: yes
@@ -24,7 +24,7 @@
     - vars/common.yml
     - vars/auth.yml
   tasks:
-    - include: tasks/auth.yml
+    - include: tasks/jvm_service.yml
 
 - hosts: notification
   become: yes
@@ -33,4 +33,4 @@
       - vars/common.yml
       - vars/notification.yml
     tasks:
-      - include: tasks/notification.yml
+      - include: tasks/jvm_service.yml

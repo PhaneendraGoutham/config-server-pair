@@ -1,0 +1,22 @@
+- name: "Check if exists or create {{ app_path }}/bin dir for {{ project_name }} jar"
+  file:
+    path: "{{ app_path }}/bin"
+    state: directory
+    mode: 0755
+    owner: "{{ user }}"
+    recurse: yes
+
+- name: "Synchronize {{ jar_name }} -> remote host:{{ app_path }}/bin"
+  synchronize:
+    src: "{{ cur_dir }}/{{ project_name }}/build/libs/{{ jar_name }}"
+    dest: "{{ app_bin_path }}"
+    rsync_opts:
+      - "-e ssh -p {{ ssh_port }} -i {{ private_key_file }}"
+
+- name: "Create systemd script"
+  copy:
+    src: "{{ cur_dir }}/ansible/conf/{{ systemd_script_name }}"
+    dest: "/usr/lib/systemd/system/{{ systemd_script_name }}"
+
+- name: "nohup sudo /usr/bin/systemctl restart {{ systemd_script_name }}"
+  command: "nohup sudo /usr/bin/systemctl restart {{ systemd_script_name }}"

@@ -1,0 +1,11 @@
+[Unit]
+Description=config
+After=syslog.target
+
+[Service]
+WorkingDirectory=/opt/config/bin
+ExecStart=/usr/bin/java -jar config.jar
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target

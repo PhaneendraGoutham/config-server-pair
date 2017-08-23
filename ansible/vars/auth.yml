@@ -1,3 +1,8 @@
+ssh_port: "{{ hostvars[groups['auth'][0]]['ansible_ssh_port'] }}"
+private_key_file: "{{ hostvars[groups['auth'][0]]['ansible_ssh_private_key_file'] }}"
+profile: "{{ hostvars[groups['auth'][0]]['ansible_profile'] }}"
+cur_dir: "{{ lookup('env','PWD') }}"
+user: "{{ hostvars[groups['auth'][0]]['ansible_ssh_user'] }}"
 jar_name: "auth.jar"
 conf_name: "application.yml"
 app_path: "/opt/auth"

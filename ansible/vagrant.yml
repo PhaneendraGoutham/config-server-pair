@@ -1,36 +1,32 @@
 ---
-- hosts: config
+- hosts: auth
   become: yes
-  remote_user: "{{ hostvars[groups['pay'][0]]['ansible_ssh_user'] }}"
+  remote_user: "{{ hostvars[groups['auth'][0]]['ansible_ssh_user'] }}"
   vars_files:
-    - vars/common.yml
     - vars/config.yml
   tasks:
     - include: tasks/jvm_service.yml
 
-- hosts: eureka
+- hosts: auth
   become: yes
-  remote_user: "{{ hostvars[groups['pay'][0]]['ansible_ssh_user'] }}"
+  remote_user: "{{ hostvars[groups['auth'][0]]['ansible_ssh_user'] }}"
   vars_files:
-    - vars/common.yml
     - vars/eureka.yml
   tasks:
     - include: tasks/jvm_service.yml
 
 - hosts: auth
   become: yes
-  remote_user: "{{ hostvars[groups['pay'][0]]['ansible_ssh_user'] }}"
+  remote_user: "{{ hostvars[groups['auth'][0]]['ansible_ssh_user'] }}"
   vars_files:
-    - vars/common.yml
     - vars/auth.yml
   tasks:
     - include: tasks/jvm_service.yml
 
 - hosts: notification
   become: yes
-  remote_user: "{{ hostvars[groups['pay'][0]]['ansible_ssh_user'] }}"
-    vars_files:
-      - vars/common.yml
-      - vars/notification.yml
-    tasks:
-      - include: tasks/jvm_service.yml
+  remote_user: "{{ hostvars[groups['notification'][0]]['ansible_ssh_user'] }}"
+  vars_files:
+    - vars/notification.yml
+  tasks:
+    - include: tasks/jvm_service.yml

@@ -1,3 +1,8 @@
+ssh_port: "{{ hostvars[groups['notification'][0]]['ansible_ssh_port'] }}"
+private_key_file: "{{ hostvars[groups['notification'][0]]['ansible_ssh_private_key_file'] }}"
+profile: "{{ hostvars[groups['notification'][0]]['ansible_profile'] }}"
+cur_dir: "{{ lookup('env','PWD') }}"
+user: "{{ hostvars[groups['notification'][0]]['ansible_ssh_user'] }}"
 jar_name: "notification.jar"
 conf_name: "application.yml"
 app_path: "/opt/notification"

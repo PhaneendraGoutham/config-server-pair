@@ -6,6 +6,7 @@
     - vars/config.yml
   tasks:
     - include: tasks/jvm_service.yml
+    - include: tasks/jvm_setup.yml
 
 - hosts: auth
   become: yes
@@ -30,3 +31,4 @@
     - vars/notification.yml
   tasks:
     - include: tasks/jvm_service.yml
+    - include: tasks/jvm_setup.yml
